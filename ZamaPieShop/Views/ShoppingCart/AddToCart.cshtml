@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Product>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Add to Cart</title>
+</head>
+<body>
+    <h1>Add to Cart</h1>
+    <form asp-action="AddToCart" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Add</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>$@product.Price</td>
+                        <td>
+                            <input type="number" name="quantity_@product.Id" min="1" value="1" />
+                        </td>
+                        <td>
+                            <input type="checkbox" name="productIds" value="@product.Id" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button type="submit">Add to Cart</button>
+    </form>
+</body>
+</html>

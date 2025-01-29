@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ZamaPieShop.Models.Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/products.css">
+    <script src="~/js/products.js" defer></script>
+</head>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Product Cards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<div class="container">
+    @foreach(var product in Model)
+    {
+        <div class="card">
+            <div class="imgBx">
+                <img src="https://i.ibb.co/RjvTJY5/7.jpg" alt="" />
+                <ul class="action">
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@product.Id"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <span>Add to wishlist</span>
+                    </li>
+
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@product.Id"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                        <span>Add to cart</span>
+                    </li>
+
+                    <li>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        <span>View Details</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <div class="productName"> @Html.DisplayFor(modelItem => product.Name)</div>
+
+                <div class="price-rating">
+                    <h2>$@Html.DisplayFor(modelItem => product.Price)</h2>
+                    <div class="rating">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa grey fa-star" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    }
+</div>

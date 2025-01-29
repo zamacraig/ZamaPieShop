@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Validate Account";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/users.css">
+    <script src="~/js/users.js" defer></script>
+</head>
+
+<div class="form-modal">
+
+    <div class="form-toggle">
+        <button id="validate-toggle" onclick="toggleLogin()">Validate User Account</button>
+    </div>
+
+    <div id="validate-form">
+        <form>
+            <input type="text" placeholder="Enter email or username" />
+            <button type="button" class="btn validate">Send Notification</button>
+            <p><a href="javascript:void(0)">Forgotten account</a></p>
+        </form>
+    </div>
+
+</div>

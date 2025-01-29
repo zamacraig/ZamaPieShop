@@ -1,0 +1,37 @@
+﻿@model ZamaPieShop.Models.ShoppingCart
+
+<div>
+    <h1>Shopping Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <form asp-action="RemoveFromCart" asp-route-id="@item.ProductId" method="post">
+                            <button type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h2>Total: $@Model.TotalPrice</h2>
+
+    <form asp-action="ClearCart" method="post">
+        <button type="submit">Clear Cart</button>
+    </form>
+    <form asp-action="CheckOut" method="post">
+        <button type="submit">Check Out</button>
+    </form>
+</div>
